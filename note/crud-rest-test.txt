@@ -1,0 +1,2 @@
+1. Run necessary statement by command: 'php artisan migrate'
+1. Run necessary statement by command: 'php artisan db:seed'
