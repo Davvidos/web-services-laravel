@@ -33,6 +33,22 @@ return [
                 'location' => 'http://127.0.0.1/soap/temperature/server',
                 'trace' => 1
             ]
+        ],
+        'bitcoin' => [
+            'name' => 'Bitcoin',
+            'class' => 'App\Soap\Bitcoin\BitcoinService',
+            'exceptions' => ['Exception'],
+            'types' => [
+                'temperature' => 'App\Soap\Bitcoin\Types\Bitcoin'
+            ],
+            'strategy' => 'AnyType',
+            'headers' => [
+                'Cache-Control' => 'no-cache, no-store'
+            ],
+            'options' => [
+                'location' => 'http://127.0.0.1/soap/bitcoin/server',
+                'trace' => 1
+            ]
         ]
 
     ],

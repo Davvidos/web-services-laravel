@@ -13,7 +13,8 @@
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "viewflex/zoap": "^1.0",
-        "ext-soap": "*"
+        "ext-soap": "*",
+        "ext-json": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
