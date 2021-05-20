@@ -17,6 +17,9 @@ use Laminas\Soap\Wsdl;
 use Laminas\Soap\Wsdl\ComplexTypeStrategy\ComplexTypeStrategyInterface;
 use SoapFault;
 
+/*
+ * Class based on viewflex/zoap solution.
+ */
 class SoapController
 {
     protected string $name;
