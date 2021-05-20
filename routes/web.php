@@ -16,3 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+app()->router->get('soap/{key}/server', [
+    'as' => 'soap.server.wsdl',
+    'uses' => 'App\Soap\SoapController@server'
+]);
+
+app()->router->post('soap/{key}/server', [
+    'as' => 'soap.server',
+    'uses' => 'App\Soap\SoapController@server'
+]);

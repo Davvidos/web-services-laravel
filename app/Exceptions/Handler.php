@@ -43,7 +43,7 @@ class Handler extends ExceptionHandler
         });
     }
 
-    public function render($request, $e): JsonResponse
+    public function render($request, $e)
     {
         if ($e instanceof ModelNotFoundException) {
             return response()->json([
