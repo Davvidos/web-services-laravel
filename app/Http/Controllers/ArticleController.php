@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class ArticleController extends Controller
 {
@@ -27,17 +28,22 @@ class ArticleController extends Controller
         return response()->json($article, 201);
     }
 
-    public function update(Request $request, Article $article)
+    public function update(Request $request, Article $article): JsonResponse
     {
         $article->update($request->all());
 
         return response()->json($article, 200);
     }
 
-    public function delete(Article $article)
+    public function delete(Article $article): JsonResponse
     {
         $article->delete();
 
         return response()->json(null, 204);
+    }
+
+    public function getArticlesByAuthor($id): Collection
+    {
+       return Article::all()->where('author_id', '=', $id);
     }
 }

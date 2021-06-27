@@ -4,23 +4,22 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use App\Models\Article;
+use App\Models\Author;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
 
-class ArticlesTableSeeder extends Seeder
+class AuthorsTableSeeder extends Seeder
 {
     public function run(): void
     {
-        Article::truncate();
+        Author::truncate();
 
         $faker = Factory::create();
 
         for ($i = 0; $i < 50; $i++) {
-            Article::create([
-                'title' => $faker->sentence,
-                'body' => $faker->paragraph,
-                'author_id' => rand(1, 50)
+            Author::create([
+                'firstName' => $faker->firstName,
+                'lastName' => $faker->lastName,
             ]);
         }
     }
