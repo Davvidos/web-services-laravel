@@ -7,19 +7,18 @@ namespace App\Http\Controllers;
 use App\Models\Author;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 class AuthorController extends Controller
 {
-    public function index()
+    public function index(): JsonResponse
     {
-        return Author::all();
+        return response()->json(Author::all(), 200);
     }
 
-    public function show(Author $author): Author
+    public function show(Author $author): JsonResponse
     {
-        return $author;
+        return response()->json($author, 200);
     }
 
     public function create(Request $request): JsonResponse
@@ -29,26 +28,38 @@ class AuthorController extends Controller
         return response()->json($author, 201);
     }
 
-    public function update(Request $request, Author $author)
+    public function update(Request $request, Author $author): JsonResponse
     {
         $author->update($request->all());
 
         return response()->json($author, 200);
     }
 
-    public function delete(Author $author)
+    public function delete(Author $author): JsonResponse
     {
         $author->delete();
 
         return response()->json(null, 204);
     }
 
-    public function getAuthorsByArticle($id): Collection
+    public function getAuthorsByArticle(int $id): JsonResponse
     {
-        return DB::table('articles')
+        $authors = DB::table('articles')
             ->join('authors', 'articles.author_id', '=', 'authors.id')
             ->select('authors.*')
             ->where('articles.id', '=', $id)
             ->get();
+
+        return response()->json($authors, 200);
+    }
+
+    public function getAuthorsByArticleDetails(int $id): JsonResponse
+    {
+        $authors = DB::table('articles')
+            ->join('authors', 'articles.author_id', '=', 'authors.id')
+            ->where('articles.id', '=', $id)
+            ->get();
+
+        return response()->json($authors, 200);
     }
 }

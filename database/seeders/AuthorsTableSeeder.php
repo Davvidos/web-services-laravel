@@ -7,12 +7,13 @@ namespace Database\Seeders;
 use App\Models\Author;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class AuthorsTableSeeder extends Seeder
 {
     public function run(): void
     {
-        Author::truncate();
+        DB::table('authors')->delete();
 
         $faker = Factory::create();
 

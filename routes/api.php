@@ -19,4 +19,10 @@ Route::put('authors/{author}', [AuthorController::class, 'update']);
 Route::delete('authors/{author}', [AuthorController::class, 'delete']);
 
 Route::get('authors/{author}/articles', [ArticleController::class, 'getArticlesByAuthor']);
+Route::get('authors/{author}/articles/{details}', [ArticleController::class, 'getArticlesByAuthorDetails']);
+
 Route::get('articles/{article}/authors', [AuthorController::class, 'getAuthorsByArticle']);
+Route::get('articles/{article}/authors/{details}', [AuthorController::class, 'getAuthorsByArticleDetails']);
+
+Route::put('articles/{article}/addAuthor/{author}', [ArticleController::class, 'addAuthorToArticle']);
+Route::put('articles/{article}/removeAuthor', [ArticleController::class, 'removeAuthorFromArticle']);
