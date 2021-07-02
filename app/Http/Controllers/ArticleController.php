@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ArticlePostRequest;
 use App\Models\Article;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ArticleController extends Controller
@@ -21,14 +21,14 @@ class ArticleController extends Controller
         return response()->json($article, 200);
     }
 
-    public function create(Request $request): JsonResponse
+    public function create(ArticlePostRequest $request): JsonResponse
     {
         $article = Article::create($request->all());
 
         return response()->json($article, 201);
     }
 
-    public function update(Request $request, Article $article): JsonResponse
+    public function update(ArticlePostRequest $request, Article $article): JsonResponse
     {
         $article->update($request->all());
 
@@ -68,7 +68,7 @@ class ArticleController extends Controller
 
     public function removeAuthorFromArticle(Article $article): JsonResponse
     {
-        $article->update(['author_id' => 0]);
+        $article->update(['author_id' => null]);
 
         return response()->json($article, 200);
     }

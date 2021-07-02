@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AuthorPostRequest;
 use App\Models\Author;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class AuthorController extends Controller
@@ -21,14 +21,14 @@ class AuthorController extends Controller
         return response()->json($author, 200);
     }
 
-    public function create(Request $request): JsonResponse
+    public function create(AuthorPostRequest $request): JsonResponse
     {
         $author = Author::create($request->all());
 
         return response()->json($author, 201);
     }
 
-    public function update(Request $request, Author $author): JsonResponse
+    public function update(AuthorPostRequest $request, Author $author): JsonResponse
     {
         $author->update($request->all());
 
